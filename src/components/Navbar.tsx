@@ -1,0 +1,70 @@
+import {
+  Zap,
+  Plus,
+  Users,
+  Wallet,
+  User,
+} from "lucide-react";
+
+interface Props {
+  activeTab: string;
+  setActiveTab: (tab: string) => void;
+}
+
+export default function Navbar({
+  activeTab,
+  setActiveTab,
+}: Props) {
+  const navItems = [
+    {
+      id: "earn",
+      icon: <Zap size={20} />,
+      label: "Earn",
+    },
+    {
+      id: "create",
+      icon: <Plus size={20} />,
+      label: "Create",
+    },
+    {
+      id: "referral",
+      icon: <Users size={20} />,
+      label: "Referral",
+    },
+    {
+      id: "withdraw",
+      icon: <Wallet size={20} />,
+      label: "Withdraw",
+    },
+    {
+      id: "profile",
+      icon: <User size={20} />,
+      label: "Profile",
+    },
+  ];
+
+  return (
+    <div className="fixed bottom-0 left-0 right-0 bg-[#09111F] border-t border-gray-800">
+      <div className="grid grid-cols-5 py-3">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            onClick={() =>
+              setActiveTab(item.id)
+            }
+            className={`flex flex-col items-center gap-1 ${
+              activeTab === item.id
+                ? "text-purple-500"
+                : "text-gray-400"
+            }`}
+          >
+            {item.icon}
+            <span className="text-xs">
+              {item.label}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
