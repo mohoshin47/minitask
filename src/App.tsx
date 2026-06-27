@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Navbar from "./components/Navbar";
 import { Toaster } from "react-hot-toast";
-
 import Earn from "./pages/Earn";
 import Create from "./pages/Create";
 import Referral from "./pages/Referral";

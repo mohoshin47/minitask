@@ -2,7 +2,6 @@ import { toast } from "react-hot-toast";
 
 export default function RewardCard() {
 const handleClaimReward = () => {
-    console.log("Button clicked! Toast should appear.");
     toast.success("Reward claimed successfully! You've earned $0.002.", {
       duration: 3000,
       position: "top-center",
