@@ -69,24 +69,22 @@ export default function TaskCard({ task }: Props) {
   };
 
   return (
-    <div className="flex items-center justify-between bg-[#111827] border border-[#2A3146] rounded-xl p-4">
-      <div className="flex items-center gap-4">
-        <div className="w-14 h-14 rounded-full bg-violet-600 flex items-center justify-center">{getIcon()}</div>
-
+    <div className="flex items-center justify-between bg-[#111827] border border-[#2A3146] rounded-xl p-3">
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center">{getIcon()}</div>
         <div className="flex flex-col items-start">
-          <h3 className="text-white text-lg font-bold">{task.title}</h3>
-
+          <h3 className="!text-white font-semibold">{task.title}</h3>
           <p className="text-gray-400 text-sm">{task.description}</p>
         </div>
       </div>
 
-      <div className="flex flex-col items-end gap-2">
+      <div className="flex flex-col items-end gap-0">
         <span className="text-violet-400 font-bold">${task.reward.toFixed(3)}</span>
 
         <button
           onClick={handleStart}
           disabled={!task.available}
-          className={`px-5 py-2 rounded-lg font-semibold transition
+          className={`px-3 py-1 rounded-lg font-semibold transition
 
             ${
               task.available
@@ -100,4 +98,4 @@ export default function TaskCard({ task }: Props) {
       </div>
     </div>
   );
-}
+}  

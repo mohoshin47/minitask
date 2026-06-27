@@ -21,11 +21,11 @@ export default function Create() {
     <div>
       {/* Task Type */}
       <Header title="Create" subtitle="Task" />
-      <div className="p-4">
+      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
         <div className="flex items-start justify-start">
-          <h2 className="!text-white font-semibold text-lg">
+          <h3 className="!text-white font-semibold text-lg">
           1. Select Task Type
-        </h2>
+        </h3>
         </div>
 
         <div className="space-y-3">
@@ -34,14 +34,14 @@ export default function Create() {
             onClick={() =>
               setTaskType("telegram")
             }
-            className={`w-full rounded-2xl border p-4 flex items-center justify-between transition ${
+            className={`w-full rounded-xl border p-3 flex items-center justify-between transition ${
               taskType === "telegram"
                 ? "border-purple-500 bg-[#151025]"
                 : "border-slate-800 bg-[#0B1320]"
             }`}
           >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center">
                 <Send
                   size={22}
                   className="text-white"
@@ -71,14 +71,14 @@ export default function Create() {
             onClick={() =>
               setTaskType("bot")
             }
-            className={`w-full rounded-2xl border p-4 flex items-center justify-between transition ${
+            className={`w-full rounded-xl border p-3 flex items-center justify-between transition ${
               taskType === "bot"
                 ? "border-purple-500 bg-[#151025]"
                 : "border-slate-800 bg-[#0B1320]"
             }`}
           >
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
                 <Bot
                   size={22}
                   className="text-white"
@@ -108,14 +108,14 @@ export default function Create() {
             onClick={() =>
               setTaskType("website")
             }
-            className={`w-full rounded-2xl border p-4 flex items-center justify-between transition ${
+            className={`w-full rounded-xl border p-3 flex items-center justify-between transition ${
               taskType === "website"
                 ? "border-purple-500 bg-[#151025]"
                 : "border-slate-800 bg-[#0B1320]"
             }`}
           >
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center">
                 <Globe
                   size={22}
                   className="text-white"
@@ -140,18 +140,17 @@ export default function Create() {
             )}
           </button>
         </div>
-      </div>
 
-      {/* Task Details */}
-      <div className="p-4">
+         {/* Task Details */}
+      <div>
         <div className="flex items-start">
-          <h2 className="!text-white font-semibold text-lg mb-3">
+          <h3 className="!text-white font-semibold text-lg mt-3">
           2. Task Details
-        </h2>
+        </h3>
         </div>
 
-        <div className="rounded-2xl border border-slate-800 bg-[#0B1320] p-4 space-y-4">
-          <div>
+        <div className="rounded-xl border border-slate-800 bg-[#0B1320] p-3 space-y-4">
+          <div className="flex flex-col items-start">
             <label className="text-gray-300 text-sm block mb-2">
               Channel Link
             </label>
@@ -166,12 +165,12 @@ export default function Create() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="text-gray-300 text-sm block mb-2">
-                Reward Per User (USDT)
+                Reward Per User ($)
               </label>
 
               <input
                 type="number"
-                placeholder="0.001"
+                placeholder="$0.001"
                 className="w-full h-12 rounded-xl border border-slate-700 bg-[#111827] px-4 text-white"
               />
             </div>
@@ -183,13 +182,13 @@ export default function Create() {
 
               <input
                 type="number"
-                placeholder="100"
+                placeholder="500"
                 className="w-full h-12 rounded-xl border border-slate-700 bg-[#111827] px-4 text-white"
               />
             </div>
           </div>
 
-          <div className="rounded-xl bg-[#111827] border border-slate-700 p-4 flex justify-between items-center">
+          <div className="rounded-xl bg-[#111827] border border-slate-700 p-3 flex justify-between items-center">
             <span className="text-gray-400">
               Total Cost
             </span>
@@ -199,11 +198,16 @@ export default function Create() {
             </span>
           </div>
 
-          <button className="w-full h-14 rounded-xl bg-gradient-to-r from-purple-600 to-violet-500 text-white font-semibold flex items-center justify-center gap-2">
+          <button className="w-full h-12 rounded-xl bg-gradient-to-r from-purple-600 to-violet-500 text-white font-semibold flex items-center justify-center gap-2">
             <Plus size={20} />
             Create Task
           </button>
         </div>
+      </div>
+
+
+
+
       </div>
     </div>
   );

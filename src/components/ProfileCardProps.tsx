@@ -11,7 +11,7 @@ export default function ProfileCardProps({ user }: UserProfileCardProps) {
   const profileImage = 'astronaut.png'; // Replace with actual image path or URL
 
   return (
-    <div className="flex items-center justify-between bg-gray-900 border border-slate-700/40 text-white rounded-lg p-4 shadow-lg w-full  mx-auto">
+    <div className="flex items-center justify-between bg-gray-900 border border-slate-700/40 text-white rounded-lg p-3 shadow-lg w-full  mx-auto">
       {/* Left side: Avatar + Info */}
       <div className="flex items-center gap-3">
         {/* Avatar placeholder */}
@@ -19,7 +19,7 @@ export default function ProfileCardProps({ user }: UserProfileCardProps) {
           <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col items-start">
           <span className="font-semibold text-lg">{user.Name}</span>
           <span className="text-gray-400 text-sm">@{user.username}</span>
         </div>

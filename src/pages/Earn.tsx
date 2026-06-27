@@ -65,7 +65,9 @@ export default function Earn() {
     <div>
       <Header title="Mini" subtitle="Task" />
 
-      <div className="p-4 pb-24">
+      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
+
+    
         {/* <User_Profile_Card user={user} /> */}
         <ProfileCardProps user={user} />
 

@@ -51,6 +51,7 @@ export default function ReferralCard() {
 
   const copyLink = () => {
     navigator.clipboard.writeText(referralLink);
+    console.log("test copy")
     toast.success("Referral Link Copied!", {
       duration: 2000,
       position: "top-center",
@@ -82,10 +83,10 @@ export default function ReferralCard() {
 
   return (
     <div>
-    <div className="rounded-3xl border border-purple-600/50 bg-gradient-to-br from-[#24104A] to-[#4B1FA5] p-5 shadow-lg">
+    <div className="bg-gradient-to-br from-[#140c3a] to-[#070d1d] border border-[#2e1d51] rounded-xl p-3 shadow-lg">
       <div className="flex items-start gap-4">
-        <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center">
-          <Users size={32} className="text-purple-300" />
+        <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+          <Users size={28} className="text-white/80" />
         </div>
 
         <div className="flex flex-col items-start ">
@@ -101,7 +102,7 @@ export default function ReferralCard() {
 
       <div className="grid grid-cols-2 mt-4">
         <div className="text-left">
-          <h3 className="text-purple-300 text-4xl font-bold">
+          <h3 className="text-purple-300 text-2xl font-bold">
             {config?.refer_reward || 0}$
           </h3>
 
@@ -111,7 +112,7 @@ export default function ReferralCard() {
         </div>
 
         <div className="text-right">
-          <h3 className="text-purple-300 text-4xl font-bold">
+          <h3 className="text-purple-300 text-2xl font-bold">
             10%
           </h3>
           <p className="text-gray-300 text-sm mt-1">
@@ -123,8 +124,8 @@ export default function ReferralCard() {
 
       {/* refer top end */}
 
-      <div className="rounded-2xl border border-slate-800 bg-[#07111F] p-4 mt-5">
-      <h3 className="text-white text-sm font-medium mb-3">
+      <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3 mt-5">
+      <h3 className="flex text-white text-sm font-medium mb-1">
         Your Referral Link
       </h3>
 
@@ -154,26 +155,26 @@ export default function ReferralCard() {
     </div>
 
     {/* link share oftion end */}
-     <div className="grid grid-cols-2 gap-4 mt-5">
+     <div className=" grid grid-cols-2 gap-4 mt-4">
       
       {/* Total Referrals */}
-      <div className="bg-[#07111F] border border-slate-800 rounded-2xl p-5">
+      <div className="bg-[#07111F] border border-slate-800 rounded-xl p-3 ">
         <p className="text-gray-400 text-sm font-medium">
           Total Referrals
         </p>
 
-        <h2 className="mt-3 text-5xl font-bold !text-purple-500">
+        <h2 className="mt-3  !text-2xl font-bold !text-purple-500">
           {user?.referrals || 0}
         </h2>
       </div>
 
       {/* Referral Income */}
-      <div className="bg-[#07111F] border border-slate-800 rounded-2xl p-5">
+      <div className="bg-[#07111F] border border-slate-800 rounded-xl p-3">
         <p className="text-gray-400 text-sm font-medium">
           Referral Income
         </p>
 
-        <h2 className="mt-3 text-5xl font-bold !text-purple-500">
+        <h2 className="mt-3 !text-2xl font-bold !text-purple-500">
           ${user?.totalreferralsincome?.toFixed(3) || "0.000"}
         </h2>
       </div>
@@ -181,9 +182,9 @@ export default function ReferralCard() {
 
      {/* refer list start */}
 
-      <div className="rounded-2xl border border-slate-800 bg-[#07111F] p-4 mt-5">
+      <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3 mt-4">
        <div className="flex items-center justify-between">
-        <h3 className="text-white text-lg font-semibold mb-4">
+        <h3 className="text-white text-lg font-semibold mb-2">
         Recent Referrals
       </h3>
        </div>
@@ -202,7 +203,7 @@ export default function ReferralCard() {
                     "https://ui-avatars.com/api/?name=User&background=7c3aed&color=fff"
                   }
                   alt=""
-                  className="w-12 h-12 rounded-full"
+                  className="w-10 h-10 rounded-full"
                 />
 
                 <div className="flex flex-col items-start">

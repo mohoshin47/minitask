@@ -9,8 +9,11 @@ export default function Referral() {
           <Header title="Referral" subtitle="Users" />
           </div>
       
-      <div className="p-10"> 
+      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
+        
         <ReferralCard />
+        
+
       </div>
 
 

@@ -64,19 +64,19 @@ export default function Profile() {
   return (
     <div>
           <Header title="Profile" subtitle="User" />
-      <div className="p-4 pb-24">
-         <div className="rounded-3xl border border-slate-800 bg-[#07111F] p-5">
+      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
+         <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3">
       
       {/* Profile */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
         <img
           src={"astronaut.png"}
           alt="Profile"
-          className="w-16 h-16 rounded-full"
+          className="w-14 h-14 rounded-full"
         />
 
-        <div className="flex-1 flex flex-col items-start">
-          <h2 className="!text-white text-2xl font-semibold">
+        <div className=" flex flex-col items-start ">
+          <h2 className="!text-white  font-semibold">
             {user?.Name || "Mini Task User"}
           </h2>
 
@@ -100,77 +100,75 @@ export default function Profile() {
       </div>
 
       {/* Stats */}
-      <div className="grid grid-cols-2 gap-3 mt-5">
+      <div className="grid grid-cols-2 gap-3 mt-4">
         
-        <div className="border border-slate-800 rounded-xl p-4">
+        <div className="border border-slate-800 rounded-xl p-3">
           <p className="text-gray-400 text-sm">
             Tasks Completed
           </p>
 
-          <h3 className="text-white text-3xl font-semibold mt-2">
+          <h2 className="!text-white !text-2xl font-semibold mt-2">
             {user?.totaltaskscompleted || 0}
-          </h3>
+          </h2>
         </div>
 
-        <div className="border border-slate-800 rounded-xl p-4">
+        <div className="border border-slate-800 rounded-xl p-3">
           <p className="text-gray-400 text-sm">
             Total Earned
           </p>
 
-          <h3 className="text-white text-3xl font-semibold mt-2">
+          <h2 className="!text-white !text-2xl font-semibold mt-2">
            ${user?.balance?.toFixed(3) || "0.000"}
-          </h3>
+          </h2>
         </div>
 
-        <div className="border border-slate-800 rounded-xl p-4">
+        <div className="border border-slate-800 rounded-xl p-3">
           <p className="text-gray-400 text-sm">
             Referral Count
           </p>
 
-          <h3 className="text-white text-3xl font-semibold mt-2">
+          <h2 className="!text-white !text-2xl font-semibold mt-2">
             {user?.referrals || 0}
-          </h3>
+          </h2>
         </div>
 
-        <div className="border border-slate-800 rounded-xl p-4">
+        <div className="border border-slate-800 rounded-xl p-3">
           <p className="text-gray-400 text-sm">
-            Account Status
+            Referral Status
           </p>
 
-          <h3 className="text-lime-400 text-3xl font-semibold mt-2">
+          <h2 className="!text-lime-400 !text-2xl font-semibold mt-2">
             {user?.accountStatus || "inactive"}
-          </h3>
+          </h2>
         </div>
 
       </div>
     </div>
 
      {/* user details end */}
-      <div>
-      <h3 className="text-white text-lg font-medium mb-3 mt-5">
-        Promo Code
-      </h3>
+      <div className="flex flex-col items-start mt-4">
+  <h3 className="mb-2 text-lg font-medium text-white">
+    Promo Code
+  </h3>
 
-      <div className="flex gap-3">
-        <input
-          type="text"
-          placeholder="Enter promo code"
-          value={promoCode}
-          onChange={(e) =>
-            setPromoCode(e.target.value)
-          }
-          className="flex-1 h-12 rounded-xl border border-slate-800 bg-[#07111F] px-4 text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
-        />
+  <div className="flex w-full items-center gap-2">
+    <input
+      type="text"
+      placeholder="Enter promo code"
+      value={promoCode}
+      onChange={(e) => setPromoCode(e.target.value)}
+      className="min-w-0 flex-1 h-12 rounded-xl border border-slate-800 bg-[#07111F] px-3 text-sm text-white placeholder:text-gray-500 outline-none focus:border-purple-500"
+    />
 
-        <button
-          onClick={applyPromo2}
-          disabled={loading}
-          className="px-6 rounded-xl border border-purple-600 bg-gradient-to-r from-[#2B1457] to-[#3E1B7A] text-white font-semibold hover:opacity-90"
-        >
-          Apply
-        </button>
-      </div>
-    </div>
+    <button
+      onClick={applyPromo2}
+      disabled={loading}
+      className="h-12 w-20 shrink-0 rounded-xl border border-purple-600 bg-gradient-to-r from-[#2B1457] to-[#3E1B7A] text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50"
+    >
+      Apply
+    </button>
+  </div>
+</div>
 
         
       </div>

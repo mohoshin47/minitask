@@ -70,10 +70,10 @@ export default function Withdraw() {
   return (
     <div>
       <Header title="Withdraw" subtitle="Funds" />
-      <div className="p-4">
-        <div className="rounded-3xl border border-slate-800 bg-[#07111F] p-5">
+      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
+        <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3">
           {/* Balance Card */}
-          <div className=" rounded-2xl border border-slate-800 bg-[#0B1728] p-5">
+          <div className=" rounded-xl border border-slate-800 bg-[#0B1728] p-3">
             <div className=" flex items-center justify-between">
               <div className="flex flex-col items-start justify-start">
                 <p className="text-gray-400 text-sm">Available Balance</p>
@@ -86,18 +86,18 @@ export default function Withdraw() {
                 <p className="text-gray-500 text-sm mt-2">Minimum Withdraw: {config?.min_withdraw || 1} USDT</p>
               </div>
 
-              <div className="w-16 h-16 rounded-full bg-purple-600 flex items-center justify-center">
-                <Wallet size={32} className="text-white" />
+              <div className="w-12 h-12 rounded-full bg-purple-600 flex items-center justify-center">
+                <Wallet size={28} className="text-white" />
               </div>
             </div>
           </div>
 
           {/* Method */}
-          <div className="mt-5">
-            <h3 className="flex items-start justify-start text-white font-medium mb-3">Withdrawal Method</h3>
+          <div className="mt-4">
+            <h3 className="flex items-start justify-start text-white font-medium mb-1">Withdrawal Method</h3>
             <div className="space-y-3">
               {/* TON */}
-              <label className="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0B1728] p-4 cursor-pointer">
+              <label className="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0B1728] p-3 cursor-pointer">
                 <div className="flex items-center gap-3">
                   <input type="radio" checked={method === 'ton'} onChange={() => setMethod('ton')} />
 
@@ -110,7 +110,7 @@ export default function Withdraw() {
           </div>
 
           {/* Wallet */}
-          <div className="mt-5">
+          <div className="mt-4">
             <label className=" flex  text-white text-sm">Wallet Address</label>
 
             <input
@@ -118,26 +118,26 @@ export default function Withdraw() {
               type="text"
               value={walletAddress}
               onChange={(e) => setWalletAddress(e.target.value)}
-              className="w-full h-12 mt-2 rounded-xl border border-slate-800 bg-[#0B1728] px-4 text-white outline-none"
+              className="w-full h-12 mt-1 rounded-xl border border-slate-800 bg-[#0B1728] px-4 text-gray-500 outline-none"
             />
           </div>
 
           {/* Amount */}
-          <div className="mt-5">
+          <div className="mt-4">
             <label className=" flex  text-white text-sm">Amount (USDT)</label>
 
-            <div className="flex gap-3 mt-2">
+            <div className="flex items-center gap-2 mt-1">
               <input
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
                 placeholder="Enter amount"
-                className="flex-1 h-12 rounded-xl border border-slate-800 bg-[#0B1728] px-4 text-white outline-none"
+                className="min-w-0 flex-1 h-12 rounded-xl border border-slate-800 bg-[#0B1728] px-3 text-sm text-gray-500 outline-none"
               />
 
               <button
                 onClick={() => setAmount(balance.toString())}
-                className="px-5 rounded-xl bg-purple-900 text-purple-300 border border-purple-600"
+                className="shrink-0 h-12 px-3 rounded-xl bg-purple-900 border border-purple-600 text-purple-300 text-sm font-medium"
               >
                 Max
               </button>
@@ -148,54 +148,54 @@ export default function Withdraw() {
           <button
             onClick={handleWithdraw}
             disabled={loading}
-            className="w-full h-14 mt-6 rounded-xl bg-gradient-to-r from-purple-600 to-violet-500 text-white font-semibold flex items-center justify-center gap-2"
+            className="w-full h-12 mt-4 rounded-xl bg-gradient-to-r from-purple-600 to-violet-500 text-white font-semibold flex items-center justify-center gap-2"
           >
             <Send size={18} />
             {loading ? 'Processing...' : 'Request Withdraw'}
           </button>
         </div>
-      </div>
 
-      {/* withdrowal histroy start */}
-      <div className="p-4 pb-24  rounded-3xl border border-slate-800 bg-[#07111F] p-5 m-5">
-        <h3 className="flex text-white text-lg font-semibold mb-3">Withdrawal History</h3>
+        {/* withdrowal histroy start */}
+        <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3 mt-4">
+          <h3 className="flex text-white text-lg font-semibold mb-3">Withdrawal History</h3>
 
-        <div className="space-y-3">
-          {history.length === 0 && (
-            <div className="rounded-xl border border-slate-800 bg-[#07111F] p-4 text-center text-gray-400">
-              No withdrawals found
-            </div>
-          )}
+          <div className="space-y-3">
+            {history.length === 0 && (
+              <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3 text-center text-gray-400">
+                No withdrawals found
+              </div>
+            )}
 
-          {history.map((item) => (
-            <div key={item._id} className="rounded-xl border border-slate-800 bg-[#07111F] p-4">
-              <div className="flex items-start justify-between">
-                <div className="flex flex-col items-start justify-start">
-                  <p className="!text-white font-medium">Amount: ${item.amount}</p>
+            {history.map((item) => (
+              <div key={item._id} className="rounded-xl border border-slate-800 bg-[#07111F] p-3">
+                <div className="flex items-start justify-between">
+                  <div className="flex flex-col items-start justify-start">
+                    <p className="!text-white font-medium">Amount: ${item.amount}</p>
 
-                  <p className="text-gray-400 text-sm">Wallet Address: {shortAddress(item.walletAddress)}</p>
+                    <p className="text-gray-400 text-sm">Wallet Address: {shortAddress(item.walletAddress)}</p>
 
-                  <p className="text-gray-500 text-xs mt-1">Date : {new Date(item.createdAt).toLocaleString()}</p>
-                </div>
+                    <p className="text-gray-500 text-xs mt-1">Date : {new Date(item.createdAt).toLocaleString()}</p>
+                  </div>
 
-                <div className="text-right">
-                  <span
-                    className={`text-sm font-medium ${
-                      item.status === 'pending'
-                        ? 'text-yellow-400'
-                        : item.status === 'paid'
-                          ? 'text-green-400'
-                          : 'text-red-400'
-                    }`}
-                  >
-                    {item.status}
-                  </span>
+                  <div className="text-right">
+                    <span
+                      className={`text-sm font-medium ${
+                        item.status === 'pending'
+                          ? 'text-yellow-400'
+                          : item.status === 'paid'
+                            ? 'text-green-400'
+                            : 'text-red-400'
+                      }`}
+                    >
+                      {item.status}
+                    </span>
 
-                  <p className="text-gray-400 text-xs mt-1">Fee: ${item.fee}</p>
+                    <p className="text-gray-400 text-xs mt-1">Fee: ${item.fee}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
