@@ -14,7 +14,7 @@ const DailyRewardCard: React.FC<DailyRewardProps> = ({
   onClaim,
 }) => {
   return (
-    <div className="bg-gray-900 text-white rounded-lg p-6 shadow-lg w-full mx-auto border border-[#2e1d51]">
+    <div className="bg-gradient-to-br from-[#140c3a] to-[#070d1d] text-white rounded-lg p-6 shadow-lg w-full mx-auto border border-[#2e1d51]">
       {/* Header */}
       <div className="flex items-center justify-between">
         {/* Left side: Icon + Info */}
