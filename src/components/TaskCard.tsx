@@ -43,13 +43,13 @@ export default function TaskCard({ task }: Props) {
 
   const handleStart = () => {
     if (!task.available) return;
-
     const url = new URL(task.url);
-
-    url.searchParams.set('taskId', task._id);
-
+    // Remove old parameters if an
+    url.search = '';
+    // Telegram Mini App start parameter
+    url.searchParams.set('startapp', `task_${task._id}`);
     if (window.Telegram?.WebApp) {
-      window.Telegram.WebApp.openLink(url.toString());
+      window.Telegram.WebApp.openTelegramLink(url.toString());
     } else {
       window.open(url.toString(), '_blank');
     }
@@ -73,7 +73,7 @@ export default function TaskCard({ task }: Props) {
       <div className="flex items-center gap-4">
         <div className="w-14 h-14 rounded-full bg-violet-600 flex items-center justify-center">{getIcon()}</div>
 
-        <div className='flex flex-col items-start'>
+        <div className="flex flex-col items-start">
           <h3 className="text-white text-lg font-bold">{task.title}</h3>
 
           <p className="text-gray-400 text-sm">{task.description}</p>
