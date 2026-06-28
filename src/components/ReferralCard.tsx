@@ -175,7 +175,7 @@ export default function ReferralCard() {
         </p>
 
         <h2 className="mt-3 !text-2xl font-bold !text-purple-500">
-          ${user?.totalreferralsincome?.toFixed(3) || "0.000"}
+          ${user?.totalreferralsincome?.toFixed(4) || "0.000"}
         </h2>
       </div>
     </div>

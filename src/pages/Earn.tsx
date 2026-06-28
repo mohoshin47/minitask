@@ -1,26 +1,43 @@
 import { useEffect, useMemo, useState } from 'react';
 import Header from '../components/Header';
 import TaskTabs from '../components/TaskTabs';
-
 import { getuserTasks } from '../services/userService';
 import type { Task } from '../types/usertask';
-
 import { useUser } from '../contexts/UserContext';
 import TaskCard from '../components/TaskCard';
 import ProfileCardProps from '../components/ProfileCardProps';
 import DailyRewardCard from '../components/DailyRewardCard';
 
 export default function Earn() {
-  const { user, loading } = useUser();
-
+  const { user, loading, loadUser } = useUser();
   const [tasks, setTasks] = useState<Task[]>([]);
-
   const [active, setActive] = useState<'all' | 'social' | 'website' | 'ads'>('all');
+  // useEffect(() => {
+  //   if (user?.telegramId) {
+  //     loadTasks();
+  //   }
+  // }, [user]);
 
   useEffect(() => {
     if (user?.telegramId) {
       loadTasks();
     }
+  }, [user]);
+
+  useEffect(() => {
+    const refresh = async () => {
+      await loadUser();
+
+      if (user?.telegramId) {
+        await loadTasks();
+      }
+    };
+
+    window.addEventListener('focus', refresh);
+
+    return () => {
+      window.removeEventListener('focus', refresh);
+    };
   }, [user]);
 
   async function loadTasks() {

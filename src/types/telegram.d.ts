@@ -1,5 +1,3 @@
-export {};
-
 declare global {
   interface Window {
     Telegram?: {
@@ -7,6 +5,10 @@ declare global {
         initData: string;
 
         initDataUnsafe: {
+          query_id?: string;
+
+          start_param?: string;
+
           user?: {
             id: number;
             first_name?: string;
@@ -16,11 +18,14 @@ declare global {
           };
         };
 
-        openLink: (url: string) => void;
-        openTelegramLink: (url: string) => void;
-        ready: () => void;
-        expand: () => void;
+        openTelegramLink(url: string): void;
+        openLink(url: string): void;
+        close(): void;
+        ready(): void;
+        expand(): void;
       };
     };
   }
 }
+
+export {};

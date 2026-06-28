@@ -3,43 +3,58 @@ import { getUser } from '../services/userService';
 
 interface UserContextType {
   user: any;
-  setUser: React.Dispatch<React.SetStateAction<any>>;
   loading: boolean;
+  loadUser: () => Promise<void>;
+  setUser: React.Dispatch<React.SetStateAction<any>>;
 }
 
 const UserContext = createContext<UserContextType>({
   user: null,
-  setUser: () => {},
   loading: true,
+  loadUser: async () => {},
+  setUser: () => {},
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const loadUser = async () => {
-      try {
-        let telegramId = 0;
-        const tg = window.Telegram?.WebApp;
-        if (tg?.initDataUnsafe?.user) {
-          telegramId = tg.initDataUnsafe.user.id;
-        } else {
-          telegramId = 6249158607;
-        }
-        const data = await getUser(telegramId); // telegram id
-        setUser(data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const loadUser = async () => {
+    try {
+      let telegramId = 6249158607;
 
+      const tg = window.Telegram?.WebApp;
+
+      if (tg?.initDataUnsafe?.user) {
+        telegramId = tg.initDataUnsafe.user.id;
+      }
+
+      const data = await getUser(telegramId);
+
+      setUser(data);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
     loadUser();
   }, []);
 
-  return <UserContext.Provider value={{ user, setUser, loading }}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider
+      value={{
+        user,
+        loading,
+        loadUser,
+        setUser,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 export const useUser = () => useContext(UserContext);
