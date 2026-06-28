@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import { getUser } from '../services/userService';
+import { initData } from '@telegram-apps/sdk';
 
 interface UserContextType {
   user: any;
@@ -20,14 +21,14 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-        let telegramId: number;
+        let telegramId = 0;
+        const telegramUser = initData.user();
+        if (telegramUser) {
+          telegramId = telegramUser.id;
+        } else {
+          telegramId = 6249158607;
+        }
 
-      if (window.Telegram?.WebApp?.initDataUnsafe?.user?.id) {
-        telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
-      } else {
-        // Browser test
-        telegramId = 6249158607;
-      }
         const data = await getUser(telegramId); // telegram id
         setUser(data);
       } catch (error) {
