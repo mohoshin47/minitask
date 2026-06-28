@@ -6,7 +6,6 @@ import { UserProvider } from "./contexts/UserContext";
 import { Toaster } from "react-hot-toast";
 import { GlobalConfigProvider } from "./contexts/GlobalConfigContext";
 
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <UserProvider>
