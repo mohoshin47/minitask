@@ -106,8 +106,7 @@ export default function Profile() {
           <p className="text-gray-400 text-sm">
             Tasks Completed
           </p>
-
-          <h2 className="!text-white !text-2xl font-semibold mt-2">
+          <h2 className="!m-0 !text-white !text-2xl font-semibold mt-2">
             {user?.totaltaskscompleted || 0}
           </h2>
         </div>
@@ -116,8 +115,7 @@ export default function Profile() {
           <p className="text-gray-400 text-sm">
             Total Earned
           </p>
-
-          <h2 className="!text-white !text-2xl font-semibold mt-2">
+          <h2 className=" !m-0 !text-white !text-2xl font-semibold mt-2">
            ${user?.balance?.toFixed(3) || "0.000"}
           </h2>
         </div>
@@ -126,8 +124,7 @@ export default function Profile() {
           <p className="text-gray-400 text-sm">
             Referral Count
           </p>
-
-          <h2 className="!text-white !text-2xl font-semibold mt-2">
+          <h2 className="!m-0 !text-white !text-2xl font-semibold mt-2">
             {user?.referrals || 0}
           </h2>
         </div>
@@ -136,18 +133,17 @@ export default function Profile() {
           <p className="text-gray-400 text-sm">
             Referral Status
           </p>
-
-          <h2 className="!text-lime-400 !text-2xl font-semibold mt-2">
+          <h2 className=" !m-0 !text-lime-400 !text-2xl font-semibold mt-2">
             {user?.accountStatus || "inactive"}
           </h2>
         </div>
-
       </div>
+      
     </div>
 
      {/* user details end */}
       <div className="flex flex-col items-start mt-4">
-  <h3 className="mb-2 text-lg font-medium text-white">
+  <h3 className="mb-1 text-lg font-medium text-white">
     Promo Code
   </h3>
 

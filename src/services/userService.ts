@@ -52,3 +52,11 @@ export async function getuserTasks(telegramId: number) {
   const { data } = await axios.get(`${API_URL}/api/task/available/${telegramId}`);
   return data;
 }
+
+export const claimDailyReward = async (telegramId: number) => {
+  const { data } = await axios.post(`${API_URL}/api/user/dailyclaim`, {
+    telegramId,
+  });
+
+  return data;
+};

@@ -7,6 +7,7 @@ import { requestWithdraw } from '../services/userService';
 import { useEffect, useState } from 'react';
 import { getWithdrawHistory } from '../services/userService';
 
+
 // Withdraw.tsx
 export default function Withdraw() {
   const { user, setUser } = useUser();
@@ -157,7 +158,7 @@ export default function Withdraw() {
 
         {/* withdrowal histroy start */}
         <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3 mt-4">
-          <h3 className="flex text-white text-lg font-semibold mb-3">Withdrawal History</h3>
+           <h3 className="flex items-start justify-start text-white font-medium mb-1">Withdrawal History</h3>
 
           <div className="space-y-3">
             {history.length === 0 && (

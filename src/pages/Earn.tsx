@@ -7,16 +7,16 @@ import { useUser } from '../contexts/UserContext';
 import TaskCard from '../components/TaskCard';
 import ProfileCardProps from '../components/ProfileCardProps';
 import DailyRewardCard from '../components/DailyRewardCard';
+import { useGlobalConfig } from '../contexts/GlobalConfigContext';
+import toast from 'react-hot-toast';
+import { claimDailyReward } from '../services/userService';
 
 export default function Earn() {
   const { user, loading, loadUser } = useUser();
   const [tasks, setTasks] = useState<Task[]>([]);
   const [active, setActive] = useState<'all' | 'social' | 'website' | 'ads'>('all');
-  // useEffect(() => {
-  //   if (user?.telegramId) {
-  //     loadTasks();
-  //   }
-  // }, [user]);
+  const { config } = useGlobalConfig();
+  const [claimLoading, setClaimLoading] = useState(false);
 
   useEffect(() => {
     if (user?.telegramId) {
@@ -74,8 +74,28 @@ export default function Earn() {
 
   // const [tasksCompleted, setTasksCompleted] = useState(1);
 
-  const handleClaim = () => {
-    alert('Reward claimed ✅ $0.002 added to balance!');
+  const handleClaim = async () => {
+    if (claimLoading) return;
+    setClaimLoading(true);
+    const url = config?.daily?.daily_link || 'https://google.com';
+    if (window.Telegram?.WebApp) {
+      window.Telegram.WebApp.openLink(url);
+    } else {
+      window.open(url, '_blank');
+    }
+    setTimeout(async () => {
+      try {
+        const res = await claimDailyReward(user.telegramId);
+        if (res.success) {
+          toast.success('Reward Claimed!');
+          await loadUser();
+        }
+      } catch (err: any) {
+        toast.error(err.response?.data?.message || 'Claim failed');
+      } finally {
+        setClaimLoading(false);
+      }
+    }, 60000); // 1 minute
   };
 
   return (
@@ -88,7 +108,14 @@ export default function Earn() {
 
         <div className="mt-5">
           {/* <RewardCard /> */}
-          <DailyRewardCard tasksCompleted={0} totalTasks={3} rewardAmount={0.002} onClaim={handleClaim} />
+
+          <DailyRewardCard
+            tasksCompleted={user?.totaltaskscompleted ?? 0}
+            totalTasks={config?.daily?.daily_task_target ?? 0}
+            rewardAmount={config?.daily?.daily_checkin ?? 0}
+            loading={claimLoading}
+            onClaim={handleClaim}
+          />
         </div>
 
         <TaskTabs active={active} setActive={setActive} />

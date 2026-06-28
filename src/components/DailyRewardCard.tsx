@@ -4,6 +4,7 @@ interface DailyRewardProps {
   tasksCompleted: number;
   totalTasks: number;
   rewardAmount: number;
+  loading: boolean;
   onClaim: () => void;
 }
 
@@ -11,8 +12,10 @@ const DailyRewardCard: React.FC<DailyRewardProps> = ({
   tasksCompleted,
   totalTasks,
   rewardAmount,
+  loading,
   onClaim,
 }) => {
+  const canClaim = tasksCompleted >= totalTasks && totalTasks > 0 && !loading;
   return (
     <div className="bg-gradient-to-br from-[#140c3a] to-[#070d1d] text-white rounded-lg p-4 shadow-lg w-full mx-auto border border-[#2e1d51]">
       {/* Header */}
@@ -24,14 +27,10 @@ const DailyRewardCard: React.FC<DailyRewardProps> = ({
           </div>
           <div className="flex flex-col items-start">
             <h2 className="text-xl font-bold !text-white">Daily Reward</h2>
-            <p className="text-gray-400 text-sm">
-              Complete {totalTasks} tasks everyday
-            </p>
+            <p className="text-gray-400 text-sm">Complete {totalTasks} tasks everyday</p>
             <div className="flex items-center gap-2">
               <span className="text-gray-300">Reward:</span>
-              <span className="text-purple-400 font-bold">
-                ${rewardAmount.toFixed(3)}
-              </span>
+              <span className="text-purple-400 font-bold">${rewardAmount.toFixed(3)}</span>
             </div>
           </div>
         </div>
@@ -45,14 +44,14 @@ const DailyRewardCard: React.FC<DailyRewardProps> = ({
       {/* Claim Button */}
       <button
         onClick={onClaim}
-        disabled={tasksCompleted < totalTasks}
+        disabled={!canClaim}
         className={`w-full mt-6 py-3 rounded-lg font-semibold transition ${
-          tasksCompleted < totalTasks
-            ? 'bg-gray-700 text-gray-400 cursor-not-allowed'
-            : 'bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 text-white'
+          canClaim
+            ? 'bg-gradient-to-r from-purple-600 to-purple-800 hover:from-purple-500 hover:to-purple-700 text-white'
+            : 'bg-gray-700 text-gray-400 cursor-not-allowed'
         }`}
       >
-        Claim Reward
+        {loading ? 'Claiming...' : canClaim ? 'Claim Reward' : 'Complete More Tasks'}
       </button>
     </div>
   );
