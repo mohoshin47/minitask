@@ -27,7 +27,7 @@ const DailyRewardCard: React.FC<DailyRewardProps> = ({
           </div>
           <div className="flex flex-col items-start">
             <h2 className="text-xl font-bold !text-white">Daily Reward</h2>
-            <p className="text-gray-400 text-sm">Complete {totalTasks} tasks everyday</p>
+            <p className="text-gray-400 text-sm">Complete {totalTasks} tasks </p>
             <div className="flex items-center gap-2">
               <span className="text-gray-300">Reward:</span>
               <span className="text-purple-400 font-bold">${rewardAmount.toFixed(3)}</span>

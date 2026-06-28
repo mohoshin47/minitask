@@ -7,7 +7,6 @@ import { requestWithdraw } from '../services/userService';
 import { useEffect, useState } from 'react';
 import { getWithdrawHistory } from '../services/userService';
 
-
 // Withdraw.tsx
 export default function Withdraw() {
   const { user, setUser } = useUser();
@@ -112,7 +111,8 @@ export default function Withdraw() {
 
           {/* Wallet */}
           <div className="mt-4">
-            <label className=" flex  text-white text-sm">Wallet Address</label>
+    
+            <h3 className="flex items-start justify-start text-white font-medium mb-0">Wallet Address</h3>
 
             <input
               placeholder="Enter wallet address"
@@ -125,7 +125,8 @@ export default function Withdraw() {
 
           {/* Amount */}
           <div className="mt-4">
-            <label className=" flex  text-white text-sm">Amount (USDT)</label>
+            
+            <h3 className="flex items-start justify-start text-white font-medium mb-0">Amount (USDT)</h3>
 
             <div className="flex items-center gap-2 mt-1">
               <input
@@ -158,7 +159,7 @@ export default function Withdraw() {
 
         {/* withdrowal histroy start */}
         <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3 mt-4">
-           <h3 className="flex items-start justify-start text-white font-medium mb-1">Withdrawal History</h3>
+          <h3 className="flex items-start justify-start text-white font-medium mb-1">Withdrawal History</h3>
 
           <div className="space-y-3">
             {history.length === 0 && (

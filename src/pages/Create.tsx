@@ -23,9 +23,8 @@ export default function Create() {
       <Header title="Create" subtitle="Task" />
       <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
         <div className="flex items-start justify-start">
-          <h3 className="!text-white font-semibold text-lg">
-          1. Select Task Type
-        </h3>
+         
+        <h2 className="flex items-start justify-start !text-white font-medium mb-1"> 1. Select Task Type</h2>
         </div>
 
         <div className="space-y-3">
@@ -77,7 +76,7 @@ export default function Create() {
                 : "border-slate-800 bg-[#0B1320]"
             }`}
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-indigo-500 flex items-center justify-center">
                 <Bot
                   size={22}
@@ -144,9 +143,8 @@ export default function Create() {
          {/* Task Details */}
       <div>
         <div className="flex items-start">
-          <h3 className="!text-white font-semibold text-lg mt-3">
-          2. Task Details
-        </h3>
+          
+        <h2 className="flex items-start justify-start !text-white font-medium mb-1 !mt-4 "> 2. Task Details</h2>
         </div>
 
         <div className="rounded-xl border border-slate-800 bg-[#0B1320] p-3 space-y-4">
