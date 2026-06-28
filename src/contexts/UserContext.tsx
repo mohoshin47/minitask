@@ -21,27 +21,15 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const loadUser = async () => {
       try {
-
-        // console.log("Mounted:", initData.isMounted());
-console.log("Raw:", initData.raw());
-console.log("State:", initData.state());
-console.log("StUserate:", initData.user());
-alert("Raw: "+ initData.raw()+ "State "+initData.state()+" User "+initData.user())
-
-        let telegramId = 6249158607;
-        try {
-          const telegramUser = initData.user();
-
-          if (telegramUser) {
-            telegramId = telegramUser.id;
-            alert('tg: ' + telegramId);
-          }
-        } catch (e) {
-          console.log('Browser mode');
-          alert('browser mode');
+        let telegramId = 0;
+        const telegramUser = initData.user();
+        if (telegramUser) {
+          telegramId = telegramUser.id;
+          alert("1: "+telegramId);
+        } else {
+          telegramId = 6249158607;
+            alert("2: "+telegramId);
         }
-
-        alert(telegramId);
 
         const data = await getUser(telegramId); // telegram id
         setUser(data);
