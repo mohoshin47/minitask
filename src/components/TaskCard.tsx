@@ -9,6 +9,7 @@ interface Props {
 
 export default function TaskCard({ task }: Props) {
   const [remaining, setRemaining] = useState(task.remainingSeconds || 0);
+  const [starting, setStarting] = useState(false);
 
   useEffect(() => {
     if (task.available) return;
@@ -42,11 +43,10 @@ export default function TaskCard({ task }: Props) {
   };
 
   const handleStart = () => {
-    if (!task.available) return;
+    if (!task.available || starting) return;
+    setStarting(true);
     const url = new URL(task.url);
-    // Remove old parameters if an
     url.search = '';
-    // Telegram Mini App start parameter
     url.searchParams.set('startapp', `task_${task._id}`);
     if (window.Telegram?.WebApp) {
       window.Telegram.WebApp.openTelegramLink(url.toString());
@@ -83,19 +83,16 @@ export default function TaskCard({ task }: Props) {
 
         <button
           onClick={handleStart}
-          disabled={!task.available}
-          className={`px-3 py-1 rounded-lg font-semibold transition
-
-            ${
-              task.available
-                ? 'bg-violet-600 hover:bg-violet-700 text-white'
-                : 'bg-gray-700 text-gray-400 cursor-not-allowed'
-            }
-          `}
+          disabled={!task.available || starting}
+          className={`px-3 py-1 rounded-lg font-semibold transition ${
+            task.available && !starting
+              ? 'bg-violet-600 hover:bg-violet-700 text-white'
+              : 'bg-gray-700 text-gray-400 cursor-not-allowed'
+          }`}
         >
-          {task.available ? 'Start' : formatTime(remaining)}
+          {starting ? 'Opening...' : task.available ? 'Start' : formatTime(remaining)}
         </button>
       </div>
     </div>
   );
-}  
+}

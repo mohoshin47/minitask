@@ -15,7 +15,6 @@ export default function App() {
     const handleVisible = () => {
       if (document.visibilityState === 'visible') {
         console.log('App Resume');
-
         setRefreshKey((prev) => prev + 1);
       }
     };
@@ -30,7 +29,7 @@ export default function App() {
   const renderPage = () => {
     switch (activeTab) {
       case 'earn':
-        return <Earn />;
+        return <Earn key={refreshKey} />;
       case 'create':
         return <Create />;
       case 'referral':
@@ -40,7 +39,7 @@ export default function App() {
       case 'profile':
         return <Profile />;
       default:
-        return <Earn />;
+        return <Earn key={refreshKey} />;
     }
   };
 
