@@ -58,7 +58,7 @@ export default function Earn() {
   // const [tasksCompleted, setTasksCompleted] = useState(1);
 
   const handleClaim = () => {
-    alert("Reward claimed ✅ $0.002 added to balance!");
+    alert('Reward claimed ✅ $0.002 added to balance!');
   };
 
   return (
@@ -66,19 +66,12 @@ export default function Earn() {
       <Header title="Mini" subtitle="Task" />
 
       <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
-
-    
         {/* <User_Profile_Card user={user} /> */}
         <ProfileCardProps user={user} />
 
         <div className="mt-5">
           {/* <RewardCard /> */}
-           <DailyRewardCard
-        tasksCompleted={0}
-        totalTasks={3}
-        rewardAmount={0.002}
-        onClaim={handleClaim}
-      />
+          <DailyRewardCard tasksCompleted={0} totalTasks={3} rewardAmount={0.002} onClaim={handleClaim} />
         </div>
 
         <TaskTabs active={active} setActive={setActive} />
