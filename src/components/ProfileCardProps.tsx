@@ -20,7 +20,7 @@ export default function ProfileCardProps({ user }: UserProfileCardProps) {
         </div>
 
         <div className="flex flex-col items-start">
-          <span className="font-semibold text-lg">{user.Name}</span>
+          <span className="text-h3">{user.Name}</span>
           <span className="text-gray-400 text-sm">@{user.username}</span>
         </div>
       </div>

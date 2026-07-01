@@ -44,7 +44,8 @@ export default function Navbar({
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-[#09111F] border-t border-gray-800">
+    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[720px]">
+      
       <div className="grid grid-cols-5 py-3">
         {navItems.map((item) => (
           <button

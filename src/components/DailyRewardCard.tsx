@@ -21,12 +21,12 @@ const DailyRewardCard: React.FC<DailyRewardProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between">
         {/* Left side: Icon + Info */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center">
             <span className="text-2xl">🗓️</span>
           </div>
           <div className="flex flex-col items-start">
-            <h2 className="text-xl font-bold !text-white">Daily Reward</h2>
+            <h4 className="text-h3 text-white">Daily Reward</h4>
             <p className="text-gray-400 text-sm">Complete {totalTasks} tasks </p>
             <div className="flex items-center gap-2">
               <span className="text-gray-300">Reward:</span>

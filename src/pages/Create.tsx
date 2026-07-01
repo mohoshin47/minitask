@@ -21,13 +21,13 @@ export default function Create() {
     <div>
       {/* Task Type */}
       <Header title="Create" subtitle="Task" />
-      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
+      <div className="pt-20 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
         <div className="flex items-start justify-start">
          
-        <h2 className="flex items-start justify-start !text-white font-medium mb-1"> 1. Select Task Type</h2>
+        <h2 className="flex items-start justify-start !text-white  text-h2"> 1. Select Task Type</h2>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 mt-1">
           {/* Telegram Channel */}
           <button
             onClick={() =>
@@ -48,7 +48,7 @@ export default function Create() {
               </div>
 
               <div className="text-left">
-                <h3 className="text-white font-semibold">
+                <h3 className="text-white !text-h3">
                   Telegram Channel
                 </h3>
 
@@ -85,7 +85,7 @@ export default function Create() {
               </div>
 
               <div className="text-left">
-                <h3 className="text-white font-semibold">
+                <h3 className="text-white !text-h3">
                   Telegram Bot
                 </h3>
 
@@ -122,7 +122,7 @@ export default function Create() {
               </div>
 
               <div className="text-left">
-                <h3 className="text-white font-semibold">
+                <h3 className="text-white !text-h3">
                   Website Visit
                 </h3>
 
@@ -144,12 +144,12 @@ export default function Create() {
       <div>
         <div className="flex items-start">
           
-        <h2 className="flex items-start justify-start !text-white font-medium mb-1 !mt-4 "> 2. Task Details</h2>
+        <h2 className="flex items-start justify-start !text-white text-h2 !mb-1 !mt-4 "> 2. Task Details</h2>
         </div>
 
         <div className="rounded-xl border border-slate-800 bg-[#0B1320] p-3 space-y-4">
           <div className="flex flex-col items-start">
-            <label className="text-gray-300 text-sm block mb-2">
+            <label className="text-gray-300 text-sm block mb-1">
               Channel Link
             </label>
 
@@ -162,7 +162,7 @@ export default function Create() {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="text-gray-300 text-sm block mb-2">
+              <label className="text-gray-300 text-sm block mb-1">
                 Reward Per User ($)
               </label>
 
@@ -174,7 +174,7 @@ export default function Create() {
             </div>
 
             <div>
-              <label className="text-gray-300 text-sm block mb-2">
+              <label className="text-gray-300 text-sm block mb-1">
                 Maximum Users
               </label>
 
@@ -191,7 +191,7 @@ export default function Create() {
               Total Cost
             </span>
 
-            <span className="text-2xl font-bold text-purple-500">
+            <span className="text-h1 text-purple-500">
               0.100 USDT
             </span>
           </div>

@@ -17,6 +17,7 @@ export default function Earn() {
   const [active, setActive] = useState<'all' | 'social' | 'website' | 'ads'>('all');
   const { config } = useGlobalConfig();
   const [claimLoading, setClaimLoading] = useState(false);
+  const [refreshLoading, setRefreshLoading] = useState(false);
 
   useEffect(() => {
     if (user?.telegramId) {
@@ -98,15 +99,32 @@ export default function Earn() {
     }, 60000); // 1 minute
   };
 
+  const handleRefresh = async () => {
+  setRefreshLoading(true);
+
+  try {
+    await loadUser();
+    await loadTasks();
+  } finally {
+    setRefreshLoading(false);
+  }
+};
+
   return (
     <div>
-      <Header title="Mini" subtitle="Task" />
+      <Header
+  title="Mini"
+  subtitle="Task"
+  onRefresh={handleRefresh}
+  showRefresh
+  loading={refreshLoading}
+/>
 
-      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
+      <div className="pt-20 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
         {/* <User_Profile_Card user={user} /> */}
         <ProfileCardProps user={user} />
 
-        <div className="mt-5">
+        <div className="mt-4">
           {/* <RewardCard /> */}
 
           <DailyRewardCard
@@ -120,7 +138,7 @@ export default function Earn() {
 
         <TaskTabs active={active} setActive={setActive} />
 
-        <div className="mt-5 space-y-3">
+        <div className="mt-4 space-y-3">
           {filteredTasks.length === 0 && <div className="text-center text-slate-400 py-10">No Tasks Available</div>}
 
           {filteredTasks.map((task) => (

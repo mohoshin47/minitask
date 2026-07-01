@@ -70,7 +70,7 @@ export default function Withdraw() {
   return (
     <div>
       <Header title="Withdraw" subtitle="Funds" />
-      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
+      <div className="pt-20 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
         <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3">
           {/* Balance Card */}
           <div className=" rounded-xl border border-slate-800 bg-[#0B1728] p-3">
@@ -78,10 +78,10 @@ export default function Withdraw() {
               <div className="flex flex-col items-start justify-start">
                 <p className="text-gray-400 text-sm">Available Balance</p>
 
-                <h2 className="mt-2 text-4xl font-bold !text-purple-500">
+                <h1 className="mt-2 text-lg  !text-purple-500">
                   ${user?.balance?.toFixed(3) || 0}
                   <span className="text-lg ml-2 text-white">USDT</span>
-                </h2>
+                </h1>
 
                 <p className="text-gray-500 text-sm mt-2">Minimum Withdraw: {config?.min_withdraw || 1} USDT</p>
               </div>
@@ -94,7 +94,7 @@ export default function Withdraw() {
 
           {/* Method */}
           <div className="mt-4">
-            <h3 className="flex items-start justify-start text-white font-medium mb-1">Withdrawal Method</h3>
+            <h3 className="flex items-start justify-start text-white !text-h3 mb-1">Withdrawal Method</h3>
             <div className="space-y-3">
               {/* TON */}
               <label className="flex items-center justify-between rounded-xl border border-slate-800 bg-[#0B1728] p-3 cursor-pointer">
@@ -112,7 +112,7 @@ export default function Withdraw() {
           {/* Wallet */}
           <div className="mt-4">
     
-            <h3 className="flex items-start justify-start text-white font-medium mb-0">Wallet Address</h3>
+            <h3 className="flex items-start justify-start text-white !text-h3 mb-0">Wallet Address</h3>
 
             <input
               placeholder="Enter wallet address"
@@ -126,7 +126,7 @@ export default function Withdraw() {
           {/* Amount */}
           <div className="mt-4">
             
-            <h3 className="flex items-start justify-start text-white font-medium mb-0">Amount (USDT)</h3>
+            <h3 className="flex items-start justify-start text-white !text-h3 mb-0">Amount (USDT)</h3>
 
             <div className="flex items-center gap-2 mt-1">
               <input
@@ -159,7 +159,7 @@ export default function Withdraw() {
 
         {/* withdrowal histroy start */}
         <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3 mt-4">
-          <h3 className="flex items-start justify-start text-white font-medium mb-1">Withdrawal History</h3>
+          <h3 className="flex items-start justify-start text-white text-h3 !mb-1">Withdrawal History</h3>
 
           <div className="space-y-3">
             {history.length === 0 && (

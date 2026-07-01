@@ -73,7 +73,7 @@ export default function TaskCard({ task }: Props) {
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center">{getIcon()}</div>
         <div className="flex flex-col items-start">
-          <h3 className="!text-white font-semibold">{task.title}</h3>
+          <h4 className="text-h3">{task.title}</h4>
           <p className="text-gray-400 text-sm">{task.description}</p>
         </div>
       </div>

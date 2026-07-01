@@ -64,7 +64,7 @@ export default function Profile() {
   return (
     <div>
           <Header title="Profile" subtitle="User" />
-      <div className="pt-21 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
+      <div className="pt-20 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
          <div className="rounded-xl border border-slate-800 bg-[#07111F] p-3">
       
       {/* Profile */}
@@ -76,7 +76,7 @@ export default function Profile() {
         />
 
         <div className=" flex flex-col items-start ">
-          <h2 className="!text-white  font-semibold">
+          <h2 className="!text-white  text-h2">
             {user?.Name || "Mini Task User"}
           </h2>
 
@@ -102,34 +102,34 @@ export default function Profile() {
       {/* Stats */}
       <div className="grid grid-cols-2 gap-3 mt-4">
         
-        <div className="border border-slate-800 rounded-xl p-3">
+        <div className="border border-slate-800 rounded-xl p-3 text-center">
           <p className="text-gray-400 text-sm">
             Tasks Completed
           </p>
-          <h2 className="!m-0 !text-white !text-2xl font-semibold mt-2">
+          <h2 className="!m-0 !text-white text-h1 mt-2">
             {user?.totaltaskscompleted || 0}
           </h2>
         </div>
 
-        <div className="border border-slate-800 rounded-xl p-3">
+        <div className="border border-slate-800 rounded-xl p-3 text-center">
           <p className="text-gray-400 text-sm">
             Total Earned
           </p>
-          <h2 className=" !m-0 !text-white !text-2xl font-semibold mt-2">
+          <h2 className=" !m-0 !text-white text-h1 mt-2">
            ${user?.balance?.toFixed(3) || "0.000"}
           </h2>
         </div>
 
-        <div className="border border-slate-800 rounded-xl p-3">
+        <div className="border border-slate-800 rounded-xl p-3 text-center">
           <p className="text-gray-400 text-sm">
             Referral Count
           </p>
-          <h2 className="!m-0 !text-white !text-2xl font-semibold mt-2">
+          <h2 className="!m-0 !text-white text-h1 mt-2">
             {user?.referrals || 0}
           </h2>
         </div>
 
-        <div className="border border-slate-800 rounded-xl p-3">
+        <div className="border border-slate-800 rounded-xl p-3 text-center">
           <p className="text-gray-400 text-sm">
             Referral Status
           </p>
@@ -143,7 +143,7 @@ export default function Profile() {
 
      {/* user details end */}
       <div className="flex flex-col items-start mt-4">
-  <h3 className="mb-1 text-lg font-medium text-white">
+  <h3 className="mb-1 text-h3 text-white !mb-1">
     Promo Code
   </h3>
 

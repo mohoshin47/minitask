@@ -14,7 +14,7 @@ export default function TaskTabs({ active, setActive }: Props) {
   ];
 
   return (
-   <div className="mt-4 flex gap-2 overflow-x-auto no-scrollbar whitespace-nowrap">
+   <div className="mt-4 flex gap-2 overflow-x-auto no-scrollbar">
       {tabs.map((tab) => {
         const Icon = tab.icon;
         const selected = active === tab.id;
@@ -23,7 +23,7 @@ export default function TaskTabs({ active, setActive }: Props) {
           <button
             key={tab.id}
             onClick={() => setActive(tab.id as any)}
-            className={`flex items-center gap-2  shrink-0 rounded-xl  border px-4  py-2 text-xs font-medium transition-all
+            className={`flex items-center gap-2  shrink-0 rounded-xl  border px-4  py-1.5 text-xs font-medium transition-all
               ${
                 selected
                   ? 'border-purple-500 bg-gradient-to-r from-violet-600 to-purple-500 text-white'
