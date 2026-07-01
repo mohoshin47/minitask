@@ -11,8 +11,6 @@ export const applyPromo = async (telegramId: number, code: string) => {
     telegramId,
     code,
   });
-
-  console.log('test1 ', telegramId, ' ', code, ' ', response.data);
   return response.data;
 };
 
@@ -32,19 +30,16 @@ export const requestWithdraw = async (telegramId: number, amount: number, wallet
     amount,
     walletAddress,
   });
-
   return response.data;
 };
 
 export const getWithdrawHistory = async (telegramId: number) => {
   const response = await axios.get(`${API_URL}/api/withdrawal/history/${telegramId}`);
-
   return response.data.data;
 };
 
 export const getTasks = async () => {
   const response = await axios.get(`${API_URL}/api/task`);
-
   return response.data.data;
 };
 

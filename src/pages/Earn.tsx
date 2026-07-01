@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import Header from '../components/Header';
 import TaskTabs from '../components/TaskTabs';
 import { getuserTasks } from '../services/userService';
@@ -18,33 +18,19 @@ export default function Earn() {
   const { config } = useGlobalConfig();
   const [claimLoading, setClaimLoading] = useState(false);
   const [refreshLoading, setRefreshLoading] = useState(false);
+  const firstLoad = useRef(false);
 
   useEffect(() => {
-    if (user?.telegramId) {
-      loadTasks();
-    }
-  }, [user]);
+    if (!user?.telegramId) return;
+    if (firstLoad.current) return;
+    firstLoad.current = true;
+    loadTasks();
+  }, [user?.telegramId]);
 
-  useEffect(() => {
-    const refresh = async () => {
-      await loadUser();
-
-      if (user?.telegramId) {
-        await loadTasks();
-      }
-    };
-
-    window.addEventListener('focus', refresh);
-
-    return () => {
-      window.removeEventListener('focus', refresh);
-    };
-  }, [user]);
 
   async function loadTasks() {
     try {
       const res = await getuserTasks(user!.telegramId);
-
       setTasks(res.tasks);
     } catch (err) {
       console.log(err);
@@ -101,7 +87,6 @@ export default function Earn() {
 
   const handleRefresh = async () => {
     setRefreshLoading(true);
-
     try {
       await loadUser();
       await loadTasks();
@@ -137,7 +122,7 @@ export default function Earn() {
             {filteredTasks.length === 0 ? (
               <div className="text-center py-10 text-slate-400">No Tasks Available</div>
             ) : (
-              filteredTasks.map((task) => <TaskCard key={task._id} task={task} />)
+              filteredTasks.map((task) => <TaskCard key={task._id} task={task} onReload={loadTasks} />)
             )}
           </div>
         ) : (

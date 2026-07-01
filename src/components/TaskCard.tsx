@@ -5,9 +5,10 @@ import type { Task } from '../types/usertask';
 
 interface Props {
   task: Task;
+  onReload: () => void;
 }
 
-export default function TaskCard({ task }: Props) {
+export default function TaskCard({ task, onReload }: Props) {
   const [remaining, setRemaining] = useState(task.remainingSeconds || 0);
   const [starting, setStarting] = useState(false);
 
@@ -21,8 +22,7 @@ export default function TaskCard({ task }: Props) {
         if (prev <= 1) {
           clearInterval(timer);
 
-          // চাইলে parent থেকে loadTasks() call করতে পারো
-          window.location.reload();
+          onReload();
 
           return 0;
         }

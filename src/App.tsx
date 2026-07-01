@@ -5,31 +5,16 @@ import Create from './pages/Create';
 import Referral from './pages/Referral';
 import Withdraw from './pages/Withdraw';
 import Profile from './pages/Profile';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('earn');
-  const [refreshKey, setRefreshKey] = useState(0);
 
-  useEffect(() => {
-    const handleVisible = () => {
-      if (document.visibilityState === 'visible') {
-        console.log('App Resume');
-        setRefreshKey((prev) => prev + 1);
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisible);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisible);
-    };
-  }, []);
 
   const renderPage = () => {
     switch (activeTab) {
       case 'earn':
-        return <Earn key={refreshKey} />;
+        return <Earn />;
       case 'create':
         return <Create />;
       case 'referral':
@@ -39,7 +24,7 @@ export default function App() {
       case 'profile':
         return <Profile />;
       default:
-        return <Earn key={refreshKey} />;
+        return <Earn />;
     }
   };
 
