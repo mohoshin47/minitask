@@ -44,7 +44,7 @@ export default function Navbar({
   ];
 
   return (
-    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[720px]">
+    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[720px] bg-[#081425] border-t border-gray-700">
       
       <div className="grid grid-cols-5 py-3">
         {navItems.map((item) => (

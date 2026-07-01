@@ -9,7 +9,7 @@ interface HeaderProps {
 }
 export default function Header({ title, subtitle, onRefresh, showRefresh = false }: HeaderProps) {
   return (
-    <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full max-w-[720px] h-16 bg-[#081425]">
+    <div className="fixed top-0 left-1/2 -translate-x-1/2 z-50 w-full max-w-[720px] h-16 bg-[#081425] border-b border-gray-700">
       
       <div className="h-16 px-4 flex items-center justify-between bg-[#081425]/90">
         <h1 className="text-h1 text-white">
@@ -22,7 +22,6 @@ export default function Header({ title, subtitle, onRefresh, showRefresh = false
               <RefreshCw className="w-5 h-5 text-white" />
             </button>
           )}
-
 
           {/* Notification */}
           <button className="p-2 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition">

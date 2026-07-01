@@ -19,10 +19,15 @@ export interface GlobalConfig {
   bot_link: string;
   min_withdrawal: number;
   daily:Daily;
+  adSettings: adSettings;
 }
 
 export interface Daily{
   daily_task_target:number;
   daily_checkin:number;
   daily_link:string;
+}
+
+export interface adSettings{
+  enabled: boolean;
 }

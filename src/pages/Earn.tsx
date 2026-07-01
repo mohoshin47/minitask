@@ -100,25 +100,19 @@ export default function Earn() {
   };
 
   const handleRefresh = async () => {
-  setRefreshLoading(true);
+    setRefreshLoading(true);
 
-  try {
-    await loadUser();
-    await loadTasks();
-  } finally {
-    setRefreshLoading(false);
-  }
-};
+    try {
+      await loadUser();
+      await loadTasks();
+    } finally {
+      setRefreshLoading(false);
+    }
+  };
 
   return (
     <div>
-      <Header
-  title="Mini"
-  subtitle="Task"
-  onRefresh={handleRefresh}
-  showRefresh
-  loading={refreshLoading}
-/>
+      <Header title="Mini" subtitle="Task" onRefresh={handleRefresh} showRefresh loading={refreshLoading} />
 
       <div className="pt-20 pb-24 overflow-y-auto h-screen px-3  no-scrollbar ">
         {/* <User_Profile_Card user={user} /> */}
@@ -138,13 +132,20 @@ export default function Earn() {
 
         <TaskTabs active={active} setActive={setActive} />
 
-        <div className="mt-4 space-y-3">
-          {filteredTasks.length === 0 && <div className="text-center text-slate-400 py-10">No Tasks Available</div>}
-
-          {filteredTasks.map((task) => (
-            <TaskCard key={task._id} task={task} />
-          ))}
-        </div>
+        {config?.adSettings?.enabled ? (
+          <div className="mt-4 space-y-3">
+            {filteredTasks.length === 0 ? (
+              <div className="text-center py-10 text-slate-400">No Tasks Available</div>
+            ) : (
+              filteredTasks.map((task) => <TaskCard key={task._id} task={task} />)
+            )}
+          </div>
+        ) : (
+          <div className="mt-6 rounded-xl border border-[#2A3146] bg-[#111827] p-5 text-center">
+            <h3 className="text-white text-h3">Tasks are temporarily disabled</h3>
+            <p className="mt-2 text-sm text-slate-400">Please check back later.</p>
+          </div>
+        )}
       </div>
     </div>
   );
